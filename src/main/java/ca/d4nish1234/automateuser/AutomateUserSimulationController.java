@@ -134,7 +134,7 @@ public class AutomateUserSimulationController {
 		// print all globalConfigSettings
 		Util.logInfo(globalConfigSettings.toString());
 		/**
-		 * Perform basic checks
+		 * TODO: Perform basic checks
 		 * 1) if pasting from a file does the value exist or null pointer?
 		 * 2) if computing from a file does the value exist?		
 		 */
