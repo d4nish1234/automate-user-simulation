@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -64,6 +65,7 @@ public class AutomateUserSimulationController {
 	private final String FN_WIN_KEY="fn:windowskey";
 	private final String FN_PASTE_FROM_TEXT_FILE="fn:paste.from.file:";
 	private final String FN_PARAM="fn:param-";
+	private final String FN_EXEC="fn:exec:";
 	private int clipboardSteps=0;
 	
 	private final String FILE_READ_TYPE_TEXT = "text";
@@ -394,7 +396,8 @@ public class AutomateUserSimulationController {
 					}
 					continue;
 				}else if (i+FN_PARAM.length()+2 <=inputValue.length() &&
-						FN_PARAM.substring(i,i+FN_PARAM.length()).equalsIgnoreCase(FN_PARAM)){
+						inputValue.substring(i,i+FN_PARAM.length()).equalsIgnoreCase(FN_PARAM)){
+					
 					i+=FN_PARAM.length();
 					String tmpParamColumnNumber= "";
 					try{
@@ -413,6 +416,49 @@ public class AutomateUserSimulationController {
 						throw new AutomateUserSimulationException("parameter " + tmpParamColumnNumber + "was not passed in");
 					}
 						performRobotFunctionSimple(globalConfigSettings.getParameter(tmpParamColumnNumber),step);
+					continue;
+				}else if (i+FN_EXEC.length()+2 <=inputValue.length() &&
+						inputValue.substring(i,i+FN_EXEC.length()).equalsIgnoreCase(FN_EXEC)){
+					i+=FN_EXEC.length();
+					StringBuilder tmpExecPath= new StringBuilder();
+					try{
+						while (!(inputValue.charAt(i)=='|')){
+							tmpExecPath.append(inputValue.charAt(i));
+							i++;
+						}
+					}catch (IndexOutOfBoundsException e){
+							//do nothing if we cannot identify if fn: was found or out of bounds ex etc.
+							Util.logSevere("Exec command not ended well!! ensure to close exec statement with |. Exception: " + e.toString() + "\nInput value: " + inputValue );
+							throw new AutomateUserSimulationException("Exec command not ended well!! ensure to close exec statement with |. Exception: " + e.toString() + "\nInput value: " + inputValue );
+					}
+					
+				            try {
+				                Runtime rt = Runtime.getRuntime();
+				                //Process pr = rt.exec("cmd /c dir");
+//				            Process pr = rt.exec("C:\\Users\\Danish\\Dropbox\\Danish\\ProgrammingAssets\\Scripting\\AHKTest\\callTutorialWithParams.bat");
+				                Process pr = rt.exec(tmpExecPath.toString());
+				                BufferedReader input = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+				                Util.logInfo("Starting the EXEC: " + tmpExecPath.toString());
+				                String line=null;
+				 
+				                while((line=input.readLine()) != null) {
+				                    Util.logInfo(line);
+				                }
+				 
+				                int exitVal = pr.waitFor();
+				                Util.logInfo("EXEC command completed. Exited with error code "+exitVal);
+				 
+				            } catch(Exception e) {
+				                Util.logWarn("Error occured while running the Exec command. Exception: " +e.toString());
+				                e.printStackTrace();
+				            }
+					// old reference
+//					if (globalConfigSettings.getParameter(tmpParamColumnNumber)==null || "".equals(globalConfigSettings.getParameter(tmpParamColumnNumber))){
+//						// if parameter is null: 
+//						Util.logSevere("parameter " + tmpParamColumnNumber + "was not passed in");
+//						throw new AutomateUserSimulationException("parameter " + tmpParamColumnNumber + "was not passed in");
+//					}
+						//performRobotFunctionSimple(globalConfigSettings.getParameter(tmpParamColumnNumber),step);
 					continue;
 				}else if (i+FN_COPY_TO_TEMP.length()+2 <=inputValue.length() &&
 						inputValue.substring(i,i+FN_COPY_TO_TEMP.length()).equalsIgnoreCase(FN_COPY_TO_TEMP)){
