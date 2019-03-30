@@ -38,7 +38,7 @@ Actions that is allowed to be entered for simulating user key press and commands
 
 ## 3.0 GETTING STARTED:
 
-1. Download latest automateUserSimulation-x.x.x.jar (link to be added...)
+1. Download latest automateUserSimulation-x.x.x.jar: [Download for windows](https://github.com/d4nish1234/automate-user-simulation/blob/master/download/automate-user-simulation-0.3.0-SNAPSHOT.jar).
 2. Extract setup.properties from automateUserSimulation-x.x.x.jar and place it in the location of the placed jar
 3. Open command prompt (ensure you have java 8 jre) and type java -jar automateUserSimulation.jar
 4. Keep command prompt close as to stop the program anytime, you will need to navigate to cmd prompt and press ctrl+c. There is no kill command at the moment 
