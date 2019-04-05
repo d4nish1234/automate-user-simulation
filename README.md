@@ -61,7 +61,29 @@ Actions that is allowed to be entered for simulating user key press and commands
 4. Open command prompt (ensure you have java 8 jre) and type java -jar automateUserSimulation.jar
 5. Keep command prompt close as to stop the program anytime, you will need to navigate to cmd prompt and press ctrl+c. There is no kill command at the moment 
 
-## 4.0 VERSION HISTORY
+## 4.0 SETUP.PROPERTIES
+
+Setup.properties is where all the magic happens that makes the automate user simulator work. In setup.properties the following one time configuration properties are supported:
+
+| Property | Mandatory | Description | Example |
+| --- | --- |  --- | --- |
+| file.read.path | no? | Path to file to be read for clipboard use. The path here could be relative or absolute. Forward slashes needs to be escaped. | C:\\\\temp\\\\test.txt |
+| file.read.delim | yes, if file.read.path is used ?(to be confirmed) | delimiter for reading file | \\t |
+| file.read.type | yes | The idea is that in the future multiple file types can be supported, currently only "text" is support (for text files) | text |
+| user.automate.initialdelay | no? | start with initial delay (in miliseconds) | 5000 | 
+| user.automate.delay-between-actions-in-ms | yes? | delay in between functions and input | 0 | 
+| user.automate.delay-before-paste-in-ms | no? | add delay before poasting. some machines are slow so this value maybe set to a higher number i.e. 300 (.3s) instead of 50 (.05s) | 50 |
+| user.automate.repetition | yes | how many times to repeat all of the steps | 1 |
+| user.automate.repetition.useclipboardfilecount | yes | The program is going to repeat n times. where n is number of lines in the clipboard file. (non commented values). <br /> Note: when this field is set to true, the user.automate.repetition field is overridden. | false |
+
+Moreover, in setup.properties the following commands like properties are supported. These properties act like steps that the program will take. These can be added as many times as the user likes
+
+| Property | Mandatory | Description | Example | Example explaination |
+| --- | --- |  --- | --- | --- |
+| user.automate.step.value | yes (at least once) | add user steps that the program needs to take. **(more details required on the features)**  | fn:windowskeyfn:delay:500|notepadfn:delay:500|fn:enter | press windows key -> delay for .5s -> type in "notepad" -> delay for .5s -> press enter key |
+| user.automate.step.delay | no | adds delays command | 5000 | adds delay of .5s |
+
+## 5.0 VERSION HISTORY
 
 | Version | Development Date | Description |
 | --- | --- |  --- |
