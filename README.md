@@ -40,7 +40,7 @@ Actions that is allowed to be entered for simulating user key press and commands
 
 1. Download latest automateUserSimulation-x.x.x.jar: [Download for windows](https://github.com/d4nish1234/automate-user-simulation/blob/master/download/automate-user-simulation-0.3.0-SNAPSHOT.jar).
 2. Extract setup.properties and demo_setup.properties from automateUserSimulation-x.x.x.jar and place it in the location of the placed jar
-3. Open command prompt (ensure you have java 8 jre) and run java -jar automateUserSimulation.jar -demo_setup.properties to see a demo
+3. Open command prompt (ensure you have java 8 jre) and run java -jar automateUserSimulation.jar -setup demo_setup.properties to see a demo
 4. Modify steps in setup.properties to start scripting! 
 5. Keep command prompt near you and in order to terminate the program you will need to select the command prompt and press ctrl+c to kill. There is no kill command at the moment 
 
@@ -59,7 +59,7 @@ Actions that is allowed to be entered for simulating user key press and commands
 1. Clone this project locally
 2. Invoke "mvn clean install"
 3. Inside target/classes Extract setup.properties and demo_setup.properties from automateUserSimulation-x.x.x.jar and place it in the location of the placed jar
-4. Open command prompt (ensure you have java 8 jre) and run java -jar automateUserSimulation.jar -demo_setup.properties to see a demo
+4. Open command prompt (ensure you have java 8 jre) and run java -jar automateUserSimulation.jar -setup demo_setup.properties to see a demo
 5. Modify steps in setup.properties to start scripting! 
 6. Keep command prompt near you and in order to terminate the program you will need to select the command prompt and press ctrl+c to kill. There is no kill command at the moment 
 
