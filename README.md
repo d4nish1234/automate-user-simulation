@@ -39,9 +39,10 @@ Actions that is allowed to be entered for simulating user key press and commands
 ## 3.0 GETTING STARTED:
 
 1. Download latest automateUserSimulation-x.x.x.jar: [Download for windows](https://github.com/d4nish1234/automate-user-simulation/blob/master/download/automate-user-simulation-0.3.0-SNAPSHOT.jar).
-2. Extract setup.properties from automateUserSimulation-x.x.x.jar and place it in the location of the placed jar
-3. Open command prompt (ensure you have java 8 jre) and type java -jar automateUserSimulation.jar
-4. Keep command prompt close as to stop the program anytime, you will need to navigate to cmd prompt and press ctrl+c. There is no kill command at the moment 
+2. Extract setup.properties and demo_setup.properties from automateUserSimulation-x.x.x.jar and place it in the location of the placed jar
+3. Open command prompt (ensure you have java 8 jre) and run java -jar automateUserSimulation.jar -demo to see a demo
+4. Modify steps in setup.properties to start scripting! 
+5. Keep command prompt near you and in order to terminate the program you will need to select the command prompt and press ctrl+c to kill. There is no kill command at the moment 
 
 ### 3.1 COMMAND LINE PARAMETERS:
 
@@ -57,9 +58,10 @@ Actions that is allowed to be entered for simulating user key press and commands
 
 1. Clone this project locally
 2. Invoke "mvn clean install"
-3. Inside target/classes Extract setup.properties from automateUserSimulation-x.x.x.jar and place it in the location of the placed jar
-4. Open command prompt (ensure you have java 8 jre) and type java -jar automateUserSimulation.jar
-5. Keep command prompt close as to stop the program anytime, you will need to navigate to cmd prompt and press ctrl+c. There is no kill command at the moment 
+3. Inside target/classes Extract setup.properties and demo_setup.properties from automateUserSimulation-x.x.x.jar and place it in the location of the placed jar
+4. Open command prompt (ensure you have java 8 jre) and run java -jar automateUserSimulation.jar -demo to see a demo
+5. Modify steps in setup.properties to start scripting! 
+6. Keep command prompt near you and in order to terminate the program you will need to select the command prompt and press ctrl+c to kill. There is no kill command at the moment 
 
 ## 4.0 SETUP.PROPERTIES
 
@@ -87,6 +89,7 @@ Moreover, in setup.properties the following commands like properties are support
 
 | Version | Development Date | Description |
 | --- | --- |  --- |
+| **0.3.1** | Nov 25 2019	| added a demo setup file |
 | **0.3.0** | Sept 14 2018	| add fn:exec:\<command\>\| where command could be any command i.e. cmd /c test.exe or c:\test.vb etc|
 | **0.2.9** | July 12 2018	| modify fn:param and fn:paste to now include paste from specific rows |
 | **0.2.8** | July 9 2018 	| Allow settings to be entered via command line |
